@@ -171,6 +171,51 @@ export const ProgramsPage: React.FC<ProgramsPageProps> = ({ onOpenBooking, onNav
                     </div>
                   ))}
                 </div>
+
+                {/* Classical Kitchen Remedy & Circadian Dinacharya Guidance */}
+                <div className="mt-6 p-5 bg-forest-950 text-cream-100 rounded-2xl border border-gold-500/30 space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs uppercase font-mono text-gold-400 font-semibold tracking-wider">
+                      Ayushakti Home Kitchen Remedy & Circadian Advice
+                    </span>
+                    <span className="text-[11px] font-mono text-cream-300/70">Doctor Guided</span>
+                  </div>
+
+                  {currentProgram.id === 'womens-pcod' && (
+                    <div className="text-xs text-cream-200/90 space-y-2">
+                      <p><strong>• Daily Kitchen Decoction:</strong> Boil 1 tsp methi (fenugreek) seeds + 1 tsp coriander seeds in 2 cups of water until reduced by half. Drink warm on empty stomach at 7:00 AM to enhance insulin receptivity.</p>
+                      <p><strong>• Dinacharya Clock:</strong> Complete dinner strictly before 7:30 PM. Late dinners elevate nocturnal insulin, directly halting ovarian hormone conversion.</p>
+                    </div>
+                  )}
+
+                  {currentProgram.id === 'hair-skin' && (
+                    <div className="text-xs text-cream-200/90 space-y-2">
+                      <p><strong>• Hard Water Counter-Rinse:</strong> After washing hair with Magarpatta tap water, perform a final rinse using boiled water cooled with 1 tbsp of amla powder or apple cider vinegar to dissolve mineral salts.</p>
+                      <p><strong>• Dinacharya Clock:</strong> 2 drops of lukewarm cow's ghee in each nostril at 10:00 PM (Pratimarsha Nasya) to nourish cranial nerve roots.</p>
+                    </div>
+                  )}
+
+                  {currentProgram.id === 'digestive-health' && (
+                    <div className="text-xs text-cream-200/90 space-y-2">
+                      <p><strong>• Classical Agni Catalyst:</strong> Chew a thin slice of fresh ginger sprinkled with pink rock salt (Saindhava) and a drop of lime 10 minutes before lunch and dinner to trigger natural digestive enzymes.</p>
+                      <p><strong>• Dinacharya Clock:</strong> Consume the heaviest meal between 12:00 PM and 1:30 PM when the solar Pitta cycle peaks.</p>
+                    </div>
+                  )}
+
+                  {currentProgram.id === 'corporate-pain' && (
+                    <div className="text-xs text-cream-200/90 space-y-2">
+                      <p><strong>• Desk Micro-Reset:</strong> Every 90 minutes of screen work, apply 2 drops of warm sesame oil to the base of the skull and perform 10 slow neck retractions to prevent cervical disc dehydration.</p>
+                      <p><strong>• Dinacharya Clock:</strong> Drink 1 cup of warm turmeric milk with 1/4 tsp organic dry ginger powder at 9:30 PM to soothe inflammatory paraspinal spasms.</p>
+                    </div>
+                  )}
+
+                  {currentProgram.id === 'mental-wellness' && (
+                    <div className="text-xs text-cream-200/90 space-y-2">
+                      <p><strong>• Vata Neuro-Soothe:</strong> Massage warm sesame or Brahmi oil into the soles of your feet (Pada Abhyanga) for 3 minutes before sleeping to ground erratic mental Vata.</p>
+                      <p><strong>• Dinacharya Clock:</strong> Absolute digital curfew at 10:00 PM. Blue screen photons directly suppress melatonin and irritate Prana Vayu.</p>
+                    </div>
+                  )}
+                </div>
               </div>
 
               {/* Direct Booking Callout */}

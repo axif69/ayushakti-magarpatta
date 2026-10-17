@@ -301,6 +301,64 @@ export const TreatmentsPage: React.FC<TreatmentsPageProps> = ({ onOpenBooking, o
           </div>
         )}
 
+        {/* SPECIAL EXPANDED SECTION: NADI PARIKSHA 3 DEPTHS & PULSE SCIENCE */}
+        {selectedTreatmentId === 'nadi-pariksha' && (
+          <div className="mt-16 bg-forest-950 text-cream-100 rounded-3xl p-8 sm:p-12 border border-gold-500/40 shadow-xl space-y-8">
+            <div className="max-w-3xl space-y-2">
+              <span className="text-gold-400 font-mono text-xs uppercase tracking-widest font-semibold">
+                Siddha Veda Diagnostic Science
+              </span>
+              <h3 className="font-serif text-3xl sm:text-4xl font-bold text-cream-50">
+                The Three Depths & 28 Rhythms of Nadi Pariksha
+              </h3>
+              <p className="text-cream-300/80 text-sm leading-relaxed">
+                Nadi Pariksha is not simply checking your heart rate beats per minute. Under the 2,500-year-old Siddha Veda lineage, Dr. Vaishali evaluates your radial artery across three physical depths:
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 bg-forest-900 rounded-2xl border border-gold-500/30 space-y-3">
+                <span className="text-xs font-mono uppercase text-terracotta-400 font-bold">Level 1: Sthula Nadi</span>
+                <h4 className="font-serif text-lg font-bold text-cream-50">Superficial Pulse (Current Toxins)</h4>
+                <p className="text-xs text-cream-300/80 leading-relaxed">
+                  Felt with light feather-touch pressure. Reveals active Dosha imbalances (aggravated Vata, inflamed Pitta, or congested Kapha), digestive fermentation, and immediate gut inflammation.
+                </p>
+              </div>
+
+              <div className="p-6 bg-forest-900 rounded-2xl border border-gold-500/30 space-y-3">
+                <span className="text-xs font-mono uppercase text-terracotta-400 font-bold">Level 2: Sukshma Nadi</span>
+                <h4 className="font-serif text-lg font-bold text-cream-50">Subtle Tissue Pulse (7 Dhatus)</h4>
+                <p className="text-xs text-cream-300/80 leading-relaxed">
+                  Felt with moderate pressure. Evaluates the deep biological nourishment of plasma, blood cells, muscle tissue, fat metabolism, bone density, marrow, and reproductive essence (Ojas).
+                </p>
+              </div>
+
+              <div className="p-6 bg-forest-900 rounded-2xl border border-gold-500/30 space-y-3">
+                <span className="text-xs font-mono uppercase text-terracotta-400 font-bold">Level 3: Karana Nadi</span>
+                <h4 className="font-serif text-lg font-bold text-cream-50">Deep Genetic & Emotional Pulse</h4>
+                <p className="text-xs text-cream-300/80 leading-relaxed">
+                  Felt near the radial periosteum. Uncovers your true genetic Prakruti (constitutional birth code), hereditary tendencies, and unresolved emotional grief or stress stored inside the heart and adrenals.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-6 bg-forest-900/80 rounded-2xl border border-gold-500/30 grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-cream-200">
+              <div className="space-y-1">
+                <strong className="text-gold-400 font-serif text-sm block">Sarpa Gati (Snake Wave)</strong>
+                <p>Fast, erratic, thin, and sliding pulse. Indicates excess Vata Dosha, nervous exhaustion, insomnia, dry joints, and gas.</p>
+              </div>
+              <div className="space-y-1">
+                <strong className="text-gold-400 font-serif text-sm block">Manduka Gati (Frog Wave)</strong>
+                <p>Bounding, sharp, hot, and jumping pulse. Indicates aggravated Pitta Dosha, acidic blood, liver heat, skin hives, and inflammation.</p>
+              </div>
+              <div className="space-y-1">
+                <strong className="text-gold-400 font-serif text-sm block">Hamsa Gati (Swan Wave)</strong>
+                <p>Slow, wavy, heavy, and majestic pulse. Indicates Kapha stagnation, sluggish lymphatic fluid, metabolic slowdown, and water retention.</p>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Link to targeted programs */}
         <div className="mt-14 bg-cream-50 rounded-2xl p-6 sm:p-8 border border-gold-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>

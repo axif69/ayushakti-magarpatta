@@ -9,7 +9,9 @@ import {
   ChevronDown, 
   ChevronUp, 
   Compass, 
-  Star
+  Star,
+  HelpCircle,
+  RotateCcw
 } from 'lucide-react';
 import { Marquee } from '../components/Marquee';
 import { CLINIC_INFO, TESTIMONIALS, FAQS } from '../data/clinicData';
@@ -21,6 +23,72 @@ interface HomePageProps {
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking }) => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  
+  // Interactive Prakruti / Dosha Self-Assessment State
+  const [currentQuizQuestion, setCurrentQuizQuestion] = useState<number>(0);
+  const [quizAnswers, setQuizAnswers] = useState<Record<number, 'vata' | 'pitta' | 'kapha'>>({});
+  const [quizResult, setQuizResult] = useState<string | null>(null);
+
+  const quizQuestions = [
+    {
+      question: "1. What is your natural physical frame and weight tendency?",
+      options: [
+        { label: "Slender, light bones, hard to gain weight, dries out easily", dosha: "vata" as const },
+        { label: "Medium build, athletic muscle tone, stable weight, sweats easily", dosha: "pitta" as const },
+        { label: "Solid broad frame, heavy bones, gains weight easily, slow to lose", dosha: "kapha" as const }
+      ]
+    },
+    {
+      question: "2. How does your digestive fire (Agni) behave day-to-day?",
+      options: [
+        { label: "Irregular: sometimes ravenous, sometimes forget to eat, prone to bloating/gas", dosha: "vata" as const },
+        { label: "Intense: sharp hunger, irritable if meals delayed, prone to acidity/heartburn", dosha: "pitta" as const },
+        { label: "Slow and steady: can skip meals comfortably, feels heavy or sluggish after food", dosha: "kapha" as const }
+      ]
+    },
+    {
+      question: "3. What is your typical sleep pattern?",
+      options: [
+        { label: "Light, interrupted sleeper, wake up around 2–4 AM with racing thoughts", dosha: "vata" as const },
+        { label: "Moderate sleep (6–7 hours), fall asleep quickly, wake up energized but hot", dosha: "pitta" as const },
+        { label: "Deep, heavy sleep (8+ hours), hard to wake up early, love afternoon naps", dosha: "kapha" as const }
+      ]
+    },
+    {
+      question: "4. Under acute work pressure or stress in Magarpatta, how do you react?",
+      options: [
+        { label: "Anxiety, restless worry, decision paralysis, dry throat or body tremors", dosha: "vata" as const },
+        { label: "Frustration, short temper, perfectionism, skin flushes or headaches", dosha: "pitta" as const },
+        { label: "Withdrawal, resistance to change, procrastination, emotional comfort eating", dosha: "kapha" as const }
+      ]
+    }
+  ];
+
+  const handleSelectQuizOption = (dosha: 'vata' | 'pitta' | 'kapha') => {
+    const nextAnswers = { ...quizAnswers, [currentQuizQuestion]: dosha };
+    setQuizAnswers(nextAnswers);
+
+    if (currentQuizQuestion < quizQuestions.length - 1) {
+      setCurrentQuizQuestion(currentQuizQuestion + 1);
+    } else {
+      // Calculate dominant dosha
+      const counts = { vata: 0, pitta: 0, kapha: 0 };
+      Object.values(nextAnswers).forEach(d => counts[d]++);
+      if (counts.vata >= counts.pitta && counts.vata >= counts.kapha) {
+        setQuizResult('Vata-Dominant (Air & Ether)');
+      } else if (counts.pitta >= counts.vata && counts.pitta >= counts.kapha) {
+        setQuizResult('Pitta-Dominant (Fire & Water)');
+      } else {
+        setQuizResult('Kapha-Dominant (Earth & Water)');
+      }
+    }
+  };
+
+  const handleResetQuiz = () => {
+    setCurrentQuizQuestion(0);
+    setQuizAnswers({});
+    setQuizResult(null);
+  };
 
   const toggleFaq = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
@@ -234,10 +302,10 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1: Panchkarma */}
             <div className="bg-forest-950 rounded-2xl overflow-hidden border border-gold-500/30 flex flex-col group hover:border-gold-400 transition-all">
-              <div className="h-52 overflow-hidden relative">
+              <div className="h-56 overflow-hidden relative">
                 <img
-                  src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=800&q=80"
-                  alt="Authentic Panchkarma"
+                  src="./panchkarma-droni.jpg"
+                  alt="Authentic Panchkarma Shirodhara"
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-3 left-3 bg-forest-900/90 text-gold-300 text-xs px-2.5 py-1 rounded-full border border-gold-500/30 backdrop-blur-sm">
@@ -270,9 +338,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
 
             {/* Card 2: Agnikarma */}
             <div className="bg-forest-950 rounded-2xl overflow-hidden border border-gold-500/30 flex flex-col group hover:border-gold-400 transition-all">
-              <div className="h-52 overflow-hidden relative">
+              <div className="h-56 overflow-hidden relative">
                 <img
-                  src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=800&q=80"
+                  src="./kati-basti-authentic.jpg"
                   alt="Agnikarma Pain Relief"
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
@@ -283,17 +351,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
               <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                 <div>
                   <h3 className="font-serif text-2xl text-cream-50 font-bold">
-                    Agnikarma Thermal Therapy
+                    Agnikarma & Kati Basti
                   </h3>
                   <p className="text-xs text-gold-400 italic font-serif mt-1">
                     Instant pain relief. No surgery.
                   </p>
                   <p className="text-cream-300/80 text-xs mt-3 leading-relaxed">
-                    Specialized micro-thermal probe application targeting frozen shoulder, sciatica, knee degeneration, and spondylosis.
+                    Specialized micro-thermal probe and warm oil pool therapies targeting frozen shoulder, sciatica, knee degeneration, and spondylosis.
                   </p>
                 </div>
                 <div className="pt-4 border-t border-forest-800 flex items-center justify-between">
-                  <span className="text-xs text-cream-400 font-mono">20 - 30 Mins</span>
+                  <span className="text-xs text-cream-400 font-mono">20 - 45 Mins</span>
                   <button
                     onClick={() => onOpenBooking('Agnikarma Instant Pain Relief')}
                     className="text-xs bg-terracotta-500 hover:bg-terracotta-600 text-white px-4 py-2 rounded-full font-semibold"
@@ -306,32 +374,32 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
 
             {/* Card 3: Hridaya Basti */}
             <div className="bg-forest-950 rounded-2xl overflow-hidden border border-gold-500/30 flex flex-col group hover:border-gold-400 transition-all">
-              <div className="h-52 overflow-hidden relative">
+              <div className="h-56 overflow-hidden relative">
                 <img
-                  src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80"
-                  alt="Hridaya Basti"
+                  src="./nadi-pariksha-authentic.jpg"
+                  alt="Nadi Pariksha & Pulse Reading"
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-3 left-3 bg-forest-900/90 text-gold-300 text-xs px-2.5 py-1 rounded-full border border-gold-500/30 backdrop-blur-sm">
-                  Cardio-Emotional Care
+                  Root-Cause Diagnostic
                 </div>
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                 <div>
                   <h3 className="font-serif text-2xl text-cream-50 font-bold">
-                    Hridaya Basti
+                    Nadi Pariksha Diagnostics
                   </h3>
                   <p className="text-xs text-gold-400 italic font-serif mt-1">
-                    A warm hug for your heart.
+                    Your pulse tells a story. Let us read it.
                   </p>
                   <p className="text-cream-300/80 text-xs mt-3 leading-relaxed">
-                    Medicated herbal oil pool over the cardiac chakra to dissolve corporate chest tightness, hypertension stress, and emotional trauma.
+                    Detect cellular toxic build-up, subconscious stress, and subtle organ imbalances across 28 metabolic pulse metrics before physical symptoms erupt.
                   </p>
                 </div>
                 <div className="pt-4 border-t border-forest-800 flex items-center justify-between">
-                  <span className="text-xs text-cream-400 font-mono">45 Mins</span>
+                  <span className="text-xs text-cream-400 font-mono">30 - 45 Mins</span>
                   <button
-                    onClick={() => onOpenBooking('Hridaya Basti Heart Warmth')}
+                    onClick={() => onOpenBooking('Nadi Pariksha (Pulse Reading Consultation)')}
                     className="text-xs bg-terracotta-500 hover:bg-terracotta-600 text-white px-4 py-2 rounded-full font-semibold"
                   >
                     Book Consult
@@ -410,13 +478,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Image Col */}
             <div className="lg:col-span-5 relative">
-              <div className="relative rounded-2xl overflow-hidden border-2 border-gold-500/50 shadow-2xl">
+              <div className="relative rounded-2xl overflow-hidden border-2 border-gold-500/50 shadow-2xl bg-forest-950">
                 <img
-                  src="https://images.unsplash.com/photo-1594824813589-9800742f10b7?auto=format&fit=crop&w=1000&q=80"
+                  src="./dr-vaishali-portrait.jpg"
                   alt="Dr. Vaishali - Lead Ayurvedic Physician Ayushakti Magarpatta"
                   className="w-full h-[450px] object-cover object-top"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-transparent to-transparent opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-transparent to-transparent opacity-85" />
                 <div className="absolute bottom-6 left-6 right-6 text-cream-50">
                   <h3 className="font-serif text-2xl font-bold">Dr. Vaishali</h3>
                   <p className="text-gold-300 text-xs font-mono">{CLINIC_INFO.doctor.degrees}</p>
@@ -470,6 +538,99 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
                 >
                   Read Doctor & 1987 Legacy Story
                 </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6.5. FOUNDERS & 1987 SIDDHA VEDA LINEAGE SPOTLIGHT */}
+      <section className="py-20 bg-forest-950 text-cream-100 border-b border-gold-500/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <span className="text-gold-400 font-mono text-xs uppercase tracking-widest font-semibold">
+              The Guiding Masters Since 1987
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-cream-50">
+              The 2,500-Year-Old Siddha Veda Lineage
+            </h2>
+            <p className="text-cream-300/80 text-sm sm:text-base leading-relaxed">
+              Every pulse reading and standardized Panchkarma therapy practiced at our Magarpatta clinic follows the scientific protocols developed by Master Pulse Healers Late Dr. Pankaj Naram and Vaidya Dr. Smita Naram.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+            {/* Dr. Pankaj Naram */}
+            <div className="bg-forest-900/90 rounded-2xl overflow-hidden border border-gold-500/40 shadow-xl flex flex-col group hover:border-gold-400 transition-all">
+              <div className="h-72 overflow-hidden relative bg-forest-950">
+                <img
+                  src="./dr-pankaj-naram.jpg"
+                  alt="Master Healer Late Dr. Pankaj Naram"
+                  className="w-full h-full object-cover object-top filter contrast-105 group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-transparent to-transparent opacity-85" />
+                <div className="absolute bottom-4 left-5 right-5 text-cream-50">
+                  <span className="text-[10px] font-mono uppercase bg-terracotta-500 px-2 py-0.5 rounded text-white font-semibold">
+                    1955 – 2020 • Global Legend
+                  </span>
+                  <h3 className="font-serif text-2xl font-bold text-cream-50 mt-1">
+                    Late Dr. Pankaj Naram
+                  </h3>
+                  <p className="text-gold-300 text-xs font-mono">
+                    Master Pulse Healer & Siddha Veda Lineage Holder
+                  </p>
+                </div>
+              </div>
+              <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                <p className="text-cream-200/90 text-xs sm:text-sm leading-relaxed">
+                  Trained under 125-year-old Himalayan master Baba Ramdas, Dr. Pankaj Naram read over 1.5 million pulses globally, including the Dalai Lama, Mother Teresa, and European royalty, reviving the lost secrets of Nadi Pariksha.
+                </p>
+                <div className="pt-3 border-t border-forest-800 flex items-center justify-between text-xs text-gold-400 font-semibold">
+                  <span>1.5M+ Pulses Read Globally</span>
+                  <button
+                    onClick={() => onNavigate('about')}
+                    className="hover:text-gold-300 underline underline-offset-4"
+                  >
+                    Read His Legacy →
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Dr. Smita Naram */}
+            <div className="bg-forest-900/90 rounded-2xl overflow-hidden border border-gold-500/40 shadow-xl flex flex-col group hover:border-gold-400 transition-all">
+              <div className="h-72 overflow-hidden relative bg-forest-950">
+                <img
+                  src="./dr-smita-naram.jpg"
+                  alt="Vaidya Dr. Smita Naram"
+                  className="w-full h-full object-cover object-top filter contrast-105 group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-transparent to-transparent opacity-85" />
+                <div className="absolute bottom-4 left-5 right-5 text-cream-50">
+                  <span className="text-[10px] font-mono uppercase bg-forest-800 px-2 py-0.5 rounded text-gold-300 border border-gold-500/40 font-semibold">
+                    5th Generation Vaidya • Co-Founder
+                  </span>
+                  <h3 className="font-serif text-2xl font-bold text-cream-50 mt-1">
+                    Vaidya Dr. Smita Naram
+                  </h3>
+                  <p className="text-gold-300 text-xs font-mono">
+                    Chief Formulator & Ayushakti Clinical Research Head
+                  </p>
+                </div>
+              </div>
+              <div className="p-6 space-y-3 flex-1 flex flex-col justify-between">
+                <p className="text-cream-200/90 text-xs sm:text-sm leading-relaxed">
+                  Pioneered peer-reviewed clinical trials for chronic asthma, arthritis, and infertility. She formulated over 300 FDA-compliant herbal preparations that empower Ayushakti clinics across Germany, UK, USA, and India.
+                </p>
+                <div className="pt-3 border-t border-forest-800 flex items-center justify-between text-xs text-gold-400 font-semibold">
+                  <span>300+ Standardized Botanicals</span>
+                  <button
+                    onClick={() => onNavigate('about')}
+                    className="hover:text-gold-300 underline underline-offset-4"
+                  >
+                    Read Her Research →
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -587,6 +748,90 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
                 Call: {CLINIC_INFO.phone}
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 9. INTERACTIVE PRAKRUTI / DOSHA SELF-ASSESSMENT WIDGET */}
+      <section className="py-20 bg-cream-50 text-charcoal-900 border-t border-gold-500/30">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-cream-100 rounded-3xl border border-gold-500/40 p-6 sm:p-10 shadow-xl">
+            <div className="text-center space-y-2 mb-8">
+              <span className="text-terracotta-500 font-mono text-xs uppercase tracking-widest font-semibold flex items-center justify-center gap-1.5">
+                <HelpCircle className="w-3.5 h-3.5" />
+                <span>Interactive Ayurvedic Profiling</span>
+              </span>
+              <h2 className="font-serif text-2xl sm:text-4xl font-bold text-forest-950">
+                Discover Your Prakruti (Dosha Blueprint)
+              </h2>
+              <p className="text-charcoal-600 text-xs sm:text-sm max-w-xl mx-auto">
+                Answer 4 quick diagnostic questions to discover whether your constitution is driven by Vata (Air), Pitta (Fire), or Kapha (Earth).
+              </p>
+            </div>
+
+            {!quizResult ? (
+              <div className="space-y-6">
+                <div className="flex items-center justify-between text-xs font-mono text-charcoal-500 pb-2 border-b border-gold-500/20">
+                  <span>Question {currentQuizQuestion + 1} of {quizQuestions.length}</span>
+                  <span className="text-forest-800 font-semibold">{Math.round(((currentQuizQuestion) / quizQuestions.length) * 100)}% Completed</span>
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-forest-950">
+                    {quizQuestions[currentQuizQuestion].question}
+                  </h3>
+
+                  <div className="space-y-3">
+                    {quizQuestions[currentQuizQuestion].options.map((option, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => handleSelectQuizOption(option.dosha)}
+                        className="w-full text-left p-4 rounded-xl border border-gold-500/30 bg-cream-50 hover:bg-forest-900 hover:text-gold-300 hover:border-gold-500 transition-all text-xs sm:text-sm font-medium shadow-sm flex items-center justify-between group"
+                      >
+                        <span>{option.label}</span>
+                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transform group-hover:translate-x-1 transition-all shrink-0 ml-2" />
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="text-center space-y-6 animate-in fade-in duration-500">
+                <div className="w-16 h-16 rounded-full bg-forest-900 text-gold-400 mx-auto flex items-center justify-center border border-gold-500/40 shadow-inner">
+                  <Sparkles className="w-8 h-8" />
+                </div>
+
+                <div className="space-y-2">
+                  <span className="text-xs font-mono uppercase tracking-wider text-terracotta-500 font-bold">
+                    Your Primary Biological Archetype
+                  </span>
+                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-forest-950">
+                    {quizResult}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-charcoal-700 max-w-lg mx-auto leading-relaxed">
+                    While this online quiz reveals your surface predisposition, only a clinical <strong>Nadi Pariksha (Radial Pulse Reading)</strong> at our Magarpatta clinic can detect hidden Ama toxins, organ stress, and multi-doshic sub-frequencies deep in your tissues.
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4 border-t border-gold-500/20">
+                  <button
+                    onClick={() => onOpenBooking(`Prakruti Assessment Consult (${quizResult})`)}
+                    className="w-full sm:w-auto bg-terracotta-500 hover:bg-terracotta-600 text-white font-semibold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-full shadow-md transition-all flex items-center justify-center gap-2"
+                  >
+                    <Calendar className="w-4 h-4" />
+                    <span>Confirm With Dr. Vaishali</span>
+                  </button>
+
+                  <button
+                    onClick={handleResetQuiz}
+                    className="w-full sm:w-auto bg-cream-200 hover:bg-cream-300 text-forest-900 font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-full transition-colors flex items-center justify-center gap-2"
+                  >
+                    <RotateCcw className="w-4 h-4" />
+                    <span>Retake Assessment</span>
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>

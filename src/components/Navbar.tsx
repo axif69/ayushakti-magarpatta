@@ -75,8 +75,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenB
             onClick={() => { onNavigate('home'); setMobileMenuOpen(false); }}
             className="flex items-center gap-3 text-left group focus:outline-none"
           >
-            <div className="w-10 h-10 rounded-full border border-gold-500/60 flex items-center justify-center bg-forest-900/80 shadow-md group-hover:border-gold-400 transition-colors">
-              <span className="font-serif text-gold-400 text-lg font-bold">आ</span>
+            <div className="w-10 h-10 rounded-full border border-gold-500/60 p-1 flex items-center justify-center bg-forest-900/90 shadow-md group-hover:border-gold-400 transition-colors">
+              <img src="./ayushakti-logo.png" alt="Ayushakti Emblem" className="w-full h-full object-contain" />
             </div>
             <div>
               <div className="flex items-center gap-2">

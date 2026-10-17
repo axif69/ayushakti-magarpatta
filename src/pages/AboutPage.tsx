@@ -1,10 +1,12 @@
 import React from 'react';
 import { 
-  ShieldCheck, 
   Quote, 
   Calendar, 
   CheckCircle2, 
-  ArrowRight
+  ArrowRight,
+  Award,
+  BookOpen,
+  Sparkles
 } from 'lucide-react';
 import { CLINIC_INFO } from '../data/clinicData';
 
@@ -20,83 +22,210 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenBooking, onNavigate 
       <section className="bg-forest-950 text-cream-100 py-20 px-4 sm:px-6 lg:px-8 border-b border-gold-500/30 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#CFAF7E_1px,transparent_1px)] [background-size:24px_24px] opacity-10" />
         <div className="max-w-7xl mx-auto relative z-10 text-center space-y-4">
-          <span className="text-gold-400 font-mono text-xs uppercase tracking-widest font-semibold inline-block">
-            37+ Years of Authentic Healing
-          </span>
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-forest-900 border border-gold-500/30 text-gold-400 text-xs font-mono uppercase tracking-widest">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>2,500-Year-Old Siddha Veda Lineage</span>
+          </div>
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-cream-50">
-            The Legacy & Lead Doctor
+            The Founders, The Lineage & Dr. Vaishali
           </h1>
-          <p className="max-w-2xl mx-auto text-cream-200/90 text-sm sm:text-base leading-relaxed">
-            Rooted in the ancient 2,500-year-old Siddha Veda lineage, Ayushakti brings time-tested pulse wisdom and standardized holistic protocols right to Magarpatta City.
+          <p className="max-w-3xl mx-auto text-cream-200/90 text-sm sm:text-base leading-relaxed">
+            The story of how ancient Himalayan pulse secrets transformed modern holistic medicine across 9 countries, now serving Magarpatta City with uncompromised clinical excellence.
           </p>
         </div>
       </section>
 
-      {/* 1. THE 1987 FOUNDATIONAL LEGACY */}
+      {/* 1. THE FOUNDERS SHOWCASE: DR. PANKAJ NARAM & DR. SMITA NARAM */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6 space-y-6">
-            <span className="text-terracotta-500 font-mono text-xs uppercase tracking-widest font-semibold">
-              The Lineage Since 1987
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-forest-950 leading-tight">
-              A Global Healing Movement Rooted in Siddha Veda
-            </h2>
-            <p className="text-charcoal-700 text-sm sm:text-base leading-relaxed">
-              In 1987, Master Healer <strong>Late Dr. Pankaj Naram</strong> and <strong>Vaidya Dr. Smita Naram</strong> (a 5th generation classical Vaidya) embarked on a mission: to liberate humanity from chronic, debilitating diseases through pure, uncompromising Ayurvedic science.
-            </p>
-            <p className="text-charcoal-700 text-sm sm:text-base leading-relaxed">
-              Over the last 37+ years, Ayushakti has grown from a humble Mumbai sanctuary to a globally revered institution operating in <strong>9 countries</strong> (including Germany, Switzerland, the United States, UK, and Australia) and over <strong>29+ clinics across Maharashtra</strong>. Over <strong>1.5 Million individuals worldwide</strong> have experienced profound biological recovery through Ayushakti's certified formulations and pulse diagnostics.
-            </p>
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <span className="text-terracotta-500 font-mono text-xs uppercase tracking-widest font-semibold">
+            Our Global Legacy Since 1987
+          </span>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-forest-950">
+            Master Healers Who Re-Awakened Ayurveda Worldwide
+          </h2>
+          <p className="text-charcoal-600 text-sm sm:text-base leading-relaxed">
+            Ayushakti was born out of an unbroken spiritual and medical lineage. Meet the visionary founders who proved ancient pulse diagnosis to international medical faculties.
+          </p>
+        </div>
 
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="p-4 bg-cream-50 rounded-xl border border-gold-500/30">
-                <div className="font-serif text-2xl font-bold text-forest-900">1.5 Million+</div>
-                <div className="text-xs text-charcoal-600 mt-1">Lives Transformed Globally</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
+          {/* Late Dr. Pankaj Naram Card */}
+          <div className="bg-cream-50 rounded-3xl overflow-hidden border border-gold-500/40 shadow-xl flex flex-col justify-between group hover:border-gold-500 transition-all">
+            <div>
+              <div className="h-96 overflow-hidden relative bg-forest-900">
+                <img
+                  src="./dr-pankaj-naram.jpg"
+                  alt="Master Healer Late Dr. Pankaj Naram"
+                  className="w-full h-full object-cover object-top filter contrast-105 group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-transparent to-transparent opacity-75" />
+                <div className="absolute bottom-5 left-6 right-6 text-cream-50">
+                  <span className="text-[11px] font-mono uppercase bg-terracotta-500 px-3 py-1 rounded text-white font-semibold">
+                    1955 – 2020
+                  </span>
+                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-cream-50 mt-2">
+                    Late Dr. Pankaj Naram
+                  </h3>
+                  <p className="text-gold-300 text-xs font-mono">
+                    Master Pulse Healer & Siddha Veda Lineage Holder
+                  </p>
+                </div>
               </div>
-              <div className="p-4 bg-cream-50 rounded-xl border border-gold-500/30">
-                <div className="font-serif text-2xl font-bold text-forest-900">9 Countries</div>
-                <div className="text-xs text-charcoal-600 mt-1">Global Medical Recognition</div>
+
+              <div className="p-8 space-y-4">
+                <p className="text-charcoal-700 text-sm leading-relaxed">
+                  {CLINIC_INFO.founders.drPankajNaram.bio}
+                </p>
+
+                <div className="p-4 bg-forest-950 text-cream-100 rounded-2xl border border-gold-500/20 text-xs space-y-2">
+                  <div className="flex items-center gap-2 text-gold-400 font-semibold uppercase font-mono">
+                    <BookOpen className="w-4 h-4" />
+                    <span>The Lineage from Baba Ramdas</span>
+                  </div>
+                  <p className="text-cream-300/80 leading-relaxed">
+                    Under the strict mentorship of his 125-year-old master Baba Ramdas, Dr. Pankaj Naram decoded ancient palm-leaf scrolls describing 28 distinct radial pulse waves (Gatis). His techniques enabled doctors to map chronic ailments long before standard pathology.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="px-8 pb-8 pt-2">
+              <div className="flex items-center justify-between text-xs text-forest-800 font-semibold border-t border-gold-500/20 pt-4">
+                <span>Patients Read: 1.5M+ Worldwide</span>
+                <span className="text-gold-600 font-mono">Global Icon</span>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-6">
-            <div className="relative rounded-3xl overflow-hidden border-2 border-gold-500/40 shadow-2xl">
-              <img
-                src="https://images.unsplash.com/photo-1512290900672-1f55b9e0f316?auto=format&fit=crop&w=1200&q=80"
-                alt="Ayushakti Ayurvedic Heritage & Copper Vessels"
-                className="w-full h-[450px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-forest-950/85 via-forest-950/30 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 text-cream-100 space-y-2">
-                <div className="flex items-center gap-2 text-gold-400 text-xs font-mono uppercase">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>US-FDA Inspected & GMP Certified</span>
+          {/* Dr. Smita Naram Card */}
+          <div className="bg-cream-50 rounded-3xl overflow-hidden border border-gold-500/40 shadow-xl flex flex-col justify-between group hover:border-gold-500 transition-all">
+            <div>
+              <div className="h-96 overflow-hidden relative bg-forest-900 flex items-center justify-center">
+                <img
+                  src="./dr-smita-naram.jpg"
+                  alt="Vaidya Dr. Smita Naram"
+                  className="w-full h-full object-cover object-top filter contrast-105 group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-transparent to-transparent opacity-75" />
+                <div className="absolute bottom-5 left-6 right-6 text-cream-50">
+                  <span className="text-[11px] font-mono uppercase bg-forest-800 px-3 py-1 rounded text-gold-300 border border-gold-500/30 font-semibold">
+                    5th Generation Vaidya
+                  </span>
+                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-cream-50 mt-2">
+                    Vaidya Dr. Smita Naram
+                  </h3>
+                  <p className="text-gold-300 text-xs font-mono">
+                    Co-Founder, Lead Formulator & Clinical Research Head
+                  </p>
                 </div>
-                <p className="font-serif text-xl font-bold text-cream-50">
-                  Standardized Herbal Purity & Research
+              </div>
+
+              <div className="p-8 space-y-4">
+                <p className="text-charcoal-700 text-sm leading-relaxed">
+                  {CLINIC_INFO.founders.drSmitaNaram.bio}
                 </p>
-                <p className="text-xs text-cream-200/80">
-                  All Ayushakti remedies undergo heavy-metal testing, microbiological screening, and clinical batch validation.
-                </p>
+
+                <div className="p-4 bg-forest-950 text-cream-100 rounded-2xl border border-gold-500/20 text-xs space-y-2">
+                  <div className="flex items-center gap-2 text-gold-400 font-semibold uppercase font-mono">
+                    <Award className="w-4 h-4" />
+                    <span>Published Clinical Trials & US-FDA Compliance</span>
+                  </div>
+                  <p className="text-cream-300/80 leading-relaxed">
+                    Dr. Smita Naram bridged classical herbal alchemy with modern pharmacological testing. Every Ayushakti formula is heavy-metal tested, DNA-fingerprinted for botanical authenticity, and produced in GMP-certified sterile labs.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="px-8 pb-8 pt-2">
+              <div className="flex items-center justify-between text-xs text-forest-800 font-semibold border-t border-gold-500/20 pt-4">
+                <span>Herbal Formulations: 300+ Standardized</span>
+                <span className="text-gold-600 font-mono">37+ Years Legacy</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. MEET DR. VAISHALI (PROFILE SECTION) */}
-      <section className="bg-cream-200/60 py-20 border-y border-gold-500/30">
+      {/* 2. THE 6 STAGES OF DISEASE BREAKDOWN (EDUCATIONAL EDITORIAL DEPTH) */}
+      <section className="bg-forest-950 text-cream-100 py-20 border-y border-gold-500/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl space-y-3 mb-12">
+            <span className="text-gold-400 font-mono text-xs uppercase tracking-widest font-semibold">
+              The Science of Early Reversal: Shad Kriya Kala
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-cream-50">
+              Why Ayushakti Pulse Reading Catches Illness Years Before Lab Scans
+            </h2>
+            <p className="text-cream-300/80 text-sm leading-relaxed">
+              In modern Western pathology, a person is declared "healthy" until blood tests, X-rays, or MRIs show structural cellular damage. In Siddha Veda Ayurveda, disease evolves through 6 distinct biological stages:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 bg-forest-900 rounded-2xl border border-gold-500/30 space-y-2">
+              <span className="text-xs font-mono text-terracotta-400 font-bold uppercase">Stage 1: Sanchaya (Accumulation)</span>
+              <h4 className="font-serif text-lg font-bold text-cream-50">Toxin Build-up in Digestive Fire</h4>
+              <p className="text-xs text-cream-300/80 leading-relaxed">
+                Sluggish digestive enzymes (Manda Agni) cause subtle fermenting toxins (Ama) to gather in stomach and intestines. Detected instantly via Nadi Pariksha. Standard tests: Normal.
+              </p>
+            </div>
+
+            <div className="p-6 bg-forest-900 rounded-2xl border border-gold-500/30 space-y-2">
+              <span className="text-xs font-mono text-terracotta-400 font-bold uppercase">Stage 2: Prakopa (Aggravation)</span>
+              <h4 className="font-serif text-lg font-bold text-cream-50">Dosha Irritation & Gas/Acidity</h4>
+              <p className="text-xs text-cream-300/80 leading-relaxed">
+                Toxins begin to ferment and agitate Vata, Pitta, or Kapha. Occasional acid reflux or minor fatigue occurs. Detected via Nadi Pariksha. Standard tests: Normal.
+              </p>
+            </div>
+
+            <div className="p-6 bg-forest-900 rounded-2xl border border-gold-500/30 space-y-2">
+              <span className="text-xs font-mono text-terracotta-400 font-bold uppercase">Stage 3: Prasara (Circulation)</span>
+              <h4 className="font-serif text-lg font-bold text-cream-50">Toxins Enter Bloodstream</h4>
+              <p className="text-xs text-cream-300/80 leading-relaxed">
+                Metabolic waste overflows into plasma (Rasa) and blood vessels (Rakta), circulating systemically. Patient feels generalized heaviness. Detected via Nadi Pariksha. Standard tests: Normal.
+              </p>
+            </div>
+
+            <div className="p-6 bg-forest-900 rounded-2xl border border-gold-500/30 space-y-2">
+              <span className="text-xs font-mono text-terracotta-400 font-bold uppercase">Stage 4: Sthana Samshraya (Relocation)</span>
+              <h4 className="font-serif text-lg font-bold text-cream-50">Lodging in Weak Organs</h4>
+              <p className="text-xs text-cream-300/80 leading-relaxed">
+                Toxins find vulnerable genetic weak spots: joint cartilage (Arthritis), ovaries (PCOD), cervical spine (Spondylosis), or hair follicles. Detected via Nadi Pariksha. Standard tests: Inconclusive.
+              </p>
+            </div>
+
+            <div className="p-6 bg-forest-900/90 rounded-2xl border-2 border-terracotta-500 space-y-2">
+              <span className="text-xs font-mono text-terracotta-400 font-bold uppercase">Stage 5: Vyakti (Manifestation)</span>
+              <h4 className="font-serif text-lg font-bold text-cream-50">Symptoms Explode</h4>
+              <p className="text-xs text-cream-300/80 leading-relaxed">
+                Severe joint swelling, menstrual cessation, intense sciatica, or hair clump shedding. <strong>THIS is where standard blood tests and MRI scans finally show disease.</strong>
+              </p>
+            </div>
+
+            <div className="p-6 bg-forest-900 rounded-2xl border border-gold-500/30 space-y-2">
+              <span className="text-xs font-mono text-terracotta-400 font-bold uppercase">Stage 6: Bheda (Destruction)</span>
+              <h4 className="font-serif text-lg font-bold text-cream-50">Chronic Tissue Destruction</h4>
+              <p className="text-xs text-cream-300/80 leading-relaxed">
+                Irreversible joint bone erosion, chronic organ failure, or lifelong dependence on steroids. Ayushakti intervenes to arrest degeneration and initiate deep tissue recovery.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. MEET DR. VAISHALI (LEAD PHYSICIAN PROFILE WITH REAL CLINICAL PHOTO) */}
+      <section className="bg-cream-200/60 py-20 border-b border-gold-500/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Doctor Portrait */}
             <div className="lg:col-span-5 relative">
               <div className="rounded-3xl overflow-hidden border-2 border-gold-500/50 shadow-2xl relative">
                 <img
-                  src="https://images.unsplash.com/photo-1594824813589-9800742f10b7?auto=format&fit=crop&w=1000&q=80"
+                  src="./dr-vaishali-portrait.jpg"
                   alt="Dr. Vaishali - Lead Ayurvedic Physician Ayushakti Magarpatta"
-                  className="w-full h-[500px] object-cover object-top"
+                  className="w-full h-[520px] object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest-950/90 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-cream-100">
@@ -107,7 +236,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenBooking, onNavigate 
                     {CLINIC_INFO.doctor.degrees}
                   </p>
                   <p className="text-cream-200/80 text-xs mt-0.5">
-                    {CLINIC_INFO.doctor.role} • 12+ Years Experience
+                    {CLINIC_INFO.doctor.role} • 12+ Years Clinical Experience
                   </p>
                 </div>
               </div>
@@ -116,10 +245,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenBooking, onNavigate 
             {/* Doctor Bio and Philosophy */}
             <div className="lg:col-span-7 space-y-6">
               <span className="text-terracotta-500 font-mono text-xs uppercase tracking-widest font-semibold">
-                Lead Physician Profile
+                Magarpatta Clinical Leadership
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold text-forest-950">
-                Healing the Root Cause with Compassion & Clinical Rigor
+                Healing the Root Cause with Compassion & Diagnostic Mastery
               </h2>
 
               {/* Quote Block as requested in prompt */}
@@ -138,7 +267,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenBooking, onNavigate 
                   {CLINIC_INFO.doctor.bio}
                 </p>
                 <p>
-                  Having consulted patients with severe metabolic syndrome, rheumatoid flare-ups, endocrine collapse, and degenerative spine disease, Dr. Vaishali's consultations are celebrated for their warmth, depth, and actionable clarity. She takes time to listen to your entire lifestyle narrative before prescribing a single herb.
+                  Having consulted over 14,000 patients across Pune with severe metabolic syndrome, rheumatoid arthritis, endocrine collapse (PCOD), and degenerative spine disease, Dr. Vaishali's consultations are celebrated for their warmth, depth, and actionable clarity. She takes time to listen to your entire lifestyle narrative before prescribing a single herb.
                 </p>
               </div>
 
@@ -150,7 +279,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenBooking, onNavigate 
                 </div>
                 <div className="flex items-center gap-2 text-xs font-semibold text-charcoal-800">
                   <CheckCircle2 className="w-4 h-4 text-forest-700 shrink-0" />
-                  <span>Classical Panchkarma Supervision</span>
+                  <span>Standardized Panchkarma Supervision</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs font-semibold text-charcoal-800">
                   <CheckCircle2 className="w-4 h-4 text-forest-700 shrink-0" />
@@ -183,7 +312,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenBooking, onNavigate 
         </div>
       </section>
 
-      {/* 3. THE MAGARPATTA SANCTUARY (THE ATRIUM CLINIC) */}
+      {/* 4. THE MAGARPATTA SANCTUARY (THE ATRIUM CLINIC) */}
       <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="text-terracotta-500 font-mono text-xs uppercase tracking-widest font-semibold">

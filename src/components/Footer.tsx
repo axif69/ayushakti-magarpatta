@@ -16,8 +16,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenBooking }) => 
           {/* Brand Col */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full border border-gold-500/60 flex items-center justify-center bg-forest-900 shadow-md">
-                <span className="font-serif text-gold-400 text-lg font-bold">आ</span>
+              <div className="w-12 h-12 rounded-full border border-gold-500/60 p-1 flex items-center justify-center bg-forest-900 shadow-md">
+                <img src="./ayushakti-logo.png" alt="Ayushakti Emblem" className="w-full h-full object-contain" />
               </div>
               <div>
                 <span className="font-serif text-2xl font-bold tracking-tight text-cream-50">
