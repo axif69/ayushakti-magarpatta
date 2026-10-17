@@ -127,7 +127,7 @@ export const TREATMENTS: Treatment[] = [
       "Stimulates parasympathetic vagus nerve tone, reducing elevated cortisol",
       "Nourishes Sadhaka Pitta (the Ayurvedic subdosha governing heart courage and peace)"
     ],
-    image: "./kati-basti-authentic.jpg"
+    image: "./hridaya-basti-authentic.jpg"
   },
   {
     id: "abhyanga-marma",
@@ -149,7 +149,7 @@ export const TREATMENTS: Treatment[] = [
       "Calms hyper-excitable central nervous systems, inducing deep regenerative sleep",
       "Softens skin texture and restores youthful physical flexibility"
     ],
-    image: "./panchkarma-droni.jpg"
+    image: "./shiro-abhyanga-authentic.jpg"
   }
 ];
 

@@ -351,13 +351,13 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate, onOpenBooking })
               <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                 <div>
                   <h3 className="font-serif text-2xl text-cream-50 font-bold">
-                    Agnikarma & Kati Basti
+                    Agnikarma & Potli Sweda
                   </h3>
                   <p className="text-xs text-gold-400 italic font-serif mt-1">
                     Instant pain relief. No surgery.
                   </p>
                   <p className="text-cream-300/80 text-xs mt-3 leading-relaxed">
-                    Specialized micro-thermal probe and warm oil pool therapies targeting frozen shoulder, sciatica, knee degeneration, and spondylosis.
+                    Warm medicated herbal bolus (Patra Pinda Sweda) and specialized micro-thermal probe therapies targeting frozen shoulder, sciatica, knee stiffness, and spondylosis.
                   </p>
                 </div>
                 <div className="pt-4 border-t border-forest-800 flex items-center justify-between">
