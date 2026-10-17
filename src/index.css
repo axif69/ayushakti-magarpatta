@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+    color: #1A1A1A;
+    background-color: #FAF7F2;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .font-display {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* Custom subtle scrollbar */
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FAF7F2;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #CFAF7E;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1A4D3E;
+  }
+}
+
+/* Luxury visual accents */
+.copper-glow {
+  box-shadow: 0 10px 30px -10px rgba(201, 110, 61, 0.25);
+}
+
+.gold-border {
+  border-color: rgba(207, 175, 126, 0.35);
+}
+
+.frosted-glass {
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.frosted-dark {
+  background: rgba(26, 77, 62, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Subtle texture overlay for editorial tactile feel */
+.bg-grain {
+  background-image: radial-gradient(#1A4D3E 0.75px, transparent 0.75px), radial-gradient(#CFAF7E 0.75px, #FAF7F2 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+  opacity: 0.035;
+}
