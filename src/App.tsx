@@ -99,6 +99,8 @@ export function App() {
 
       {/* Floating Action Bar (Sticky Mobile Quick Access) */}
       <FloatingActionBar
+        currentPage={currentPage}
+        onNavigate={handleNavigate}
         onOpenBooking={() => handleOpenBooking()}
       />
 
