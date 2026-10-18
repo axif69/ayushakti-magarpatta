@@ -195,19 +195,29 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenB
             </button>
           </div>
         </div>
+      </header>
 
-        {/* Full-Height Mobile Navigation Drawer Overlay */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden fixed inset-x-0 top-[57px] bottom-0 z-50 bg-forest-950/98 backdrop-blur-xl border-t border-gold-500/30 overflow-y-auto px-4 py-6 space-y-4 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200">
+      {/* Full-Height Mobile Navigation Drawer Overlay (Outside header to avoid backdrop-filter clipping) */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex flex-col justify-end animate-in fade-in duration-200" onClick={() => setMobileMenuOpen(false)}>
+          <div 
+            className="bg-forest-950 border-t-2 border-gold-500 rounded-t-2xl p-5 max-h-[85vh] overflow-y-auto space-y-3.5 shadow-2xl animate-in slide-in-from-bottom duration-200"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex items-center justify-between pb-3 border-b border-forest-800">
-              <span className="flex items-center gap-1.5 text-xs uppercase tracking-widest font-mono text-gold-400 font-semibold">
-                <Compass className="w-4 h-4 text-gold-500" />
-                Select Page (5 Multi-Pages)
-              </span>
-              <span className="text-[11px] text-cream-400/80">Tap to navigate</span>
+              <div className="flex items-center gap-2">
+                <Compass className="w-5 h-5 text-gold-400" />
+                <span className="font-serif text-lg font-bold text-cream-50">Select Website Page</span>
+              </div>
+              <button 
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-1.5 rounded-full bg-forest-900 border border-gold-500/30 text-gold-400 hover:text-white"
+              >
+                <X className="w-4 h-4" />
+              </button>
             </div>
 
-            <div className="space-y-2.5">
+            <div className="space-y-2">
               {navLinks.map((link) => {
                 const isActive = currentPage === link.id;
                 return (
@@ -216,8 +226,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenB
                     onClick={() => handlePageSelect(link.id)}
                     className={`w-full text-left p-3.5 rounded-xl border transition-all flex items-center justify-between ${
                       isActive
-                        ? 'bg-forest-800/90 border-gold-500 text-cream-50 shadow-md ring-1 ring-gold-500/50'
-                        : 'bg-forest-900/60 border-forest-800 text-cream-200 hover:bg-forest-800/50 active:bg-forest-800'
+                        ? 'bg-forest-800/90 border-gold-400 text-cream-50 shadow-md ring-1 ring-gold-500/50'
+                        : 'bg-forest-900/80 border-forest-800 text-cream-200 hover:bg-forest-850 active:bg-forest-800'
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -247,7 +257,7 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenB
             </div>
 
             {/* Quick Actions at bottom of mobile menu */}
-            <div className="pt-4 border-t border-forest-800 space-y-2.5 pb-20">
+            <div className="pt-3 border-t border-forest-800 space-y-2 pb-6">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
@@ -266,8 +276,8 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate, onOpenB
               </a>
             </div>
           </div>
-        )}
-      </header>
+        </div>
+      )}
     </>
   );
 };
